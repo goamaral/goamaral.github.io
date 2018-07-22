@@ -1,4 +1,13 @@
 html {
   background-color: #141414;
   background-image: url("https://www.transparenttextures.com/patterns/black-felt.png");
+  font-size: 16px;
+}
+
+.logo {
+  font-family: 'Bangers', cursive;
+  font-size: 6rem;
+  color: white;
+  text-align: center;
+  margin-top: 20vh;
 }
