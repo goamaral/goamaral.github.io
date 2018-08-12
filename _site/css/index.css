@@ -1,0 +1,70 @@
+html {
+  background-color: #141414;
+  background-image: url("https://www.transparenttextures.com/patterns/black-felt.png");
+  font-size: 16px;
+}
+
+#top {
+  padding-top: 2rem;
+  font-family: 'Bangers';
+  color: white;
+  text-align: center;
+}
+
+#top .title {
+  font-size: 4.5rem;
+  height: 6rem;
+  line-height: 6rem;
+}
+
+#top .subtitle {
+  font-size: 1.25rem;
+  height: 2rem;
+  line-height: 2rem;
+}
+
+#content {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.post {
+  background-color: #e3e3e3;
+  width: 40rem;
+  margin-bottom: 2rem;
+  padding: 2rem;
+  font-family: 'Open Sans';
+}
+
+.post-title {
+  font-size: 1.5rem;
+  text-align: center;
+  font-family: 'Bangers';
+  height: 2rem;
+}
+
+.post-content {
+  margin-top: 1rem;
+  text-align: justify;
+  font-size: 0.875rem;
+  line-height: 2rem;
+}
+
+.post-date {
+  margin-top: 1rem;
+  font-size: 0.75rem;
+  font-style: italic;
+}
+
+.post-continue {
+  margin-top: 1rem;
+  font-size: 0.75rem;
+  display: block;
+  font-weight: bold;
+}
+
+.post-continue:hover {
+  text-decoration: underline;
+}
