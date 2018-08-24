@@ -1,35 +1,3 @@
-html {
-  background-color: #141414;
-  background-image: url("https://www.transparenttextures.com/patterns/black-felt.png");
-  font-size: 16px;
-}
-
-#top {
-  padding-top: 2rem;
-  font-family: 'Bangers';
-  color: white;
-  text-align: center;
-}
-
-#top .title {
-  font-size: 4.5rem;
-  height: 6rem;
-  line-height: 6rem;
-}
-
-#top .subtitle {
-  font-size: 1.25rem;
-  height: 2rem;
-  line-height: 2rem;
-}
-
-#content {
-  margin-top: 2rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
 .post {
   background-color: #e3e3e3;
   width: 40rem;

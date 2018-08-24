@@ -1,12 +1,12 @@
-title: Goa
+title: Goa's Blog
 email: goa.docs@gmail.com
-description: 
-baseurl: ""
-url: ""
+description: My quest to achieve mindfullness and productivity
+baseurl:
+url:
 
 markdown: kramdown
 theme: minima
 plugins:
   - jekyll-feed
 
-incremental: true
+incremental: false
