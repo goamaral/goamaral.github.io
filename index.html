@@ -2,16 +2,14 @@
 layout: "wrapper"
 css: "index"
 ---
-<div id="content">
-  {% for post in site.posts %}
-    <div class="post">
-      <h3 class="post-title">{{ post.title }}</h3>
+{% for post in site.posts %}
+  <div id="home">
+    <h3 class="title">{{ post.title }}</h3>
   
-      <div class="post-content">{{ post.excerpt }}</div>
-    
-      <p class="post-date">{{ post.date | date: "%d %B %Y" }}</p>
+    <div class="content">{{ post.excerpt }}</div>
   
-      <a href="{{ post.url }}" class="post-continue">Continue reading...</a>
-    </div>
-  {% endfor %}
-</div>
+    <p class="date">{{ post.date | date: "%d %B %Y" }}</p>
+  
+    <a href="{{ post.url }}" class="continue">Continue reading...</a>
+  </div>
+{% endfor %}

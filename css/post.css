@@ -1,4 +1,4 @@
-#home {
+#post {
   background-color: #e3e3e3;
   width: 38rem;
   margin-bottom: 2rem;
@@ -6,33 +6,26 @@
   font-family: 'Open Sans';
 }
 
-#home .title {
+#post .title {
   font-size: 1.5rem;
   text-align: center;
   font-family: 'Bangers';
   height: 2rem;
 }
 
-#home .content {
+#post .content {
   margin-top: 1rem;
   text-align: justify;
   font-size: 0.875rem;
   line-height: 2rem;
 }
 
-#home .date {
+#post .content * {
   margin-top: 1rem;
+}
+
+#post .date {
   font-size: 0.75rem;
   font-style: italic;
-}
-
-#home .continue {
-  margin-top: 1rem;
-  font-size: 0.75rem;
-  display: block;
-  font-weight: bold;
-}
-
-#home .continue:hover {
-  text-decoration: underline;
+  text-align: center;
 }

@@ -1,38 +1,38 @@
-.post {
+#home {
   background-color: #e3e3e3;
-  width: 40rem;
+  width: 38rem;
   margin-bottom: 2rem;
-  padding: 2rem;
+  padding: 2rem 3rem;
   font-family: 'Open Sans';
 }
 
-.post-title {
+#home .title {
   font-size: 1.5rem;
   text-align: center;
   font-family: 'Bangers';
   height: 2rem;
 }
 
-.post-content {
+#home .content {
   margin-top: 1rem;
   text-align: justify;
   font-size: 0.875rem;
   line-height: 2rem;
 }
 
-.post-date {
+#home .date {
   margin-top: 1rem;
   font-size: 0.75rem;
   font-style: italic;
 }
 
-.post-continue {
+#home .continue {
   margin-top: 1rem;
   font-size: 0.75rem;
   display: block;
   font-weight: bold;
 }
 
-.post-continue:hover {
+#home .continue:hover {
   text-decoration: underline;
 }

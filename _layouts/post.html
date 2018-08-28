@@ -1,3 +1,11 @@
 ---
-layout: "wrapper"
+layout: wrapper
+css: post
 ---
+<div id="post">
+  <h3 class="title">{{ page.title }}</h3>
+
+  <p class="date">{{ page.date | date: "%d %B %Y" }}</p>
+
+  <div class="content">{{ page.content }}</div>
+</div>

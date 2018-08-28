@@ -9,4 +9,4 @@ theme: minima
 plugins:
   - jekyll-feed
 
-incremental: false
+incremental: true
