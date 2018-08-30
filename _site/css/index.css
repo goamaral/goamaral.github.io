@@ -3,7 +3,7 @@
   width: 38rem;
   margin-bottom: 2rem;
   padding: 2rem 3rem;
-  font-family: 'Open Sans';
+  height: 19rem;
 }
 
 #home .title {
@@ -34,5 +34,41 @@
 }
 
 #home .continue:hover {
+  text-decoration: underline;
+}
+
+#content {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+#content #sidebar {
+  background-color: #e3e3e3;
+  padding: 2rem;
+  margin-left: 4rem;
+  height: 100%;
+}
+
+#content .column {
+  display: flex;
+  flex-direction: column;
+}
+
+#content #sidebar .title {
+  font-size: 1.5rem;
+  font-family: 'Bangers';
+  height: 2rem;
+  margin-bottom: 1rem;
+}
+
+#content #sidebar .link {
+  font-size: 0.875rem;
+  line-height: 2rem;
+  text-transform: capitalize;
+}
+
+#content #sidebar .link:hover {
   text-decoration: underline;
 }

@@ -10,3 +10,4 @@ plugins:
   - jekyll-feed
 
 incremental: true
+permalink: /:categories/:title
