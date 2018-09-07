@@ -23,3 +23,8 @@ html {
   height: 2rem;
   line-height: 2rem;
 }
+
+#content .column {
+  display: flex;
+  flex-direction: column;
+}

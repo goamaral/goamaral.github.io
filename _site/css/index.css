@@ -51,11 +51,6 @@
   height: 100%;
 }
 
-#content .column {
-  display: flex;
-  flex-direction: column;
-}
-
 #content #sidebar .title {
   font-size: 1.5rem;
   font-family: 'Bangers';
