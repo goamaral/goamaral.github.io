@@ -11,10 +11,11 @@
   text-align: center;
   font-family: 'Bangers';
   height: 2rem;
+  display: block;
 }
 
-#home .content {
-  margin-top: 1rem;
+#home .content p {
+  margin-top: 0.5rem;
   text-align: justify;
   font-size: 0.875rem;
   line-height: 2rem;

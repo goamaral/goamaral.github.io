@@ -5,13 +5,16 @@ css: "index"
 <div class="column">
   {% for post in site.posts %}
     <div id="home">
-      <h3 class="title">{{ post.title }}</h3>
+      <a href="{{ post.url }}" class="title">{{ post.title }}</a>
     
-      <div class="content">{{ post.excerpt }}</div>
+      <div class="content">{{ post.content | markdownify | truncatewords: 100 }}</div>
     
       <p class="date">{{ post.date | date: "%d %B %Y" }}</p>
     
-      <a href="{{ post.url }}" class="continue">Continue reading...</a>
+      {% assign n_words = post.content | number_of_words %}
+      {% if n_words > 100 %}
+        <a href="{{ post.url }}" class="continue">Continue reading...</a>
+      {% endif %}
     </div>
   {% endfor %}  
 </div>
