@@ -15,10 +15,3 @@ css: "index"
     </div>
   {% endfor %}  
 </div>
-
-<div id='sidebar' class='column'>
-  <p class='title'>Categories</p>
-  {% for category in site.categories %}
-    <a href="/categories/{{ category | first }}" class='link'>{{ category | first }}</a>
-  {% endfor %}
-</div>

@@ -1,9 +1,10 @@
 #post {
   background-color: #e3e3e3;
-  width: 38rem;
+  width: 47vw;
   margin-bottom: 2rem;
   padding: 2rem 3rem;
   font-family: 'Open Sans';
+  height: 100%;
 }
 
 #post .title {
