@@ -22,9 +22,9 @@
 }
 
 #home .date {
-  margin-top: 1rem;
   font-size: 0.75rem;
   font-style: italic;
+  text-align: center;
 }
 
 #home .continue {

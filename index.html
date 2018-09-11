@@ -6,11 +6,11 @@ css: "index"
   {% for post in site.posts %}
     <div id="home">
       <a href="{{ post.url }}" class="title">{{ post.title }}</a>
-    
-      <div class="content">{{ post.content | markdownify | truncatewords: 100 }}</div>
-    
+      
       <p class="date">{{ post.date | date: "%d %B %Y" }}</p>
     
+      <div class="content">{{ post.content | markdownify | truncatewords: 100 }}</div>
+        
       {% assign n_words = post.content | number_of_words %}
       {% if n_words > 100 %}
         <a href="{{ post.url }}" class="continue">Continue reading...</a>
