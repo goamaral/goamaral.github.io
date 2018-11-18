@@ -1,16 +1,15 @@
 #home {
   background-color: #e3e3e3;
-  width: 47vw;
+  max-width: 700px;
   margin-bottom: 2rem;
   padding: 2rem 3rem;
-  height: 100%;
 }
 
 #home .title {
   font-size: 1.5rem;
   text-align: center;
   font-family: 'Bangers';
-  height: 2rem;
+  margin-bottom: 0.5rem;
   display: block;
 }
 

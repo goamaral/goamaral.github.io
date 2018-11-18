@@ -14,14 +14,12 @@ html {
 
 #top .title {
   font-size: 4.5rem;
-  height: 6rem;
-  line-height: 6rem;
+  margin-bottom: 1.5rem;
 }
 
 #top .subtitle {
   font-size: 1.25rem;
-  height: 2rem;
-  line-height: 2rem;
+  margin-bottom: 0.75rem;
 }
 
 #content .column {

@@ -1,17 +1,16 @@
 #post {
   background-color: #e3e3e3;
-  width: 47vw;
+  max-width: 700px;
   margin-bottom: 2rem;
   padding: 2rem 3rem;
   font-family: 'Open Sans';
-  height: 100%;
 }
 
 #post .title {
   font-size: 1.5rem;
   text-align: center;
   font-family: 'Bangers';
-  height: 2rem;
+  margin-bottom: 0.5rem;
 }
 
 #post .content p {
