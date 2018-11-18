@@ -8,6 +8,7 @@ markdown: kramdown
 theme: minima
 plugins:
   - jekyll-feed
+  - jekyll-seo-tag
 
 incremental: true
 permalink: /:categories/:title

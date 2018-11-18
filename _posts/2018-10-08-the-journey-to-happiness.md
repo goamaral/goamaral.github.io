@@ -3,7 +3,7 @@ layout: post
 title: The journey to happiness
 css: post
 ---
-During my late teens (high school and the first year of university), I struggled with deep depressive moments and accompanied some close friends passing through the same kind of problem. Was a rough period ... but I am conscious it's a phenomenon that is increasingly recurrent nowadays, especially in teens. Is a state of transition to adulthood that most of us aren't ready for.
+During my late teens (high school and the first year of university), I struggled with deep depressive moments and accompanied some close friends passing through the same kind of problem. It was a rough period but I am conscious it's a phenomenon that is increasingly recurrent nowadays, especially in teens. Is a state of transition to adulthood that most of us aren't ready for.
 
 In an attempt to surpass this phase, I tried to understand what were the underlying causes. What has changed since my early simple, happy middle school years?
 
