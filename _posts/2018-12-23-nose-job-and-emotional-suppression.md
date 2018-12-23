@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Nose job and emotional surpression
+title: Nose job and emotional suppression
 css: post
 ---
 
