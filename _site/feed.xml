@@ -1,17 +1,59 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.3">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2018-11-18T20:59:58+00:00</updated><id>http://localhost:4000/</id><title type="html">Goa’s Blog</title><subtitle>My quest to achieve mindfullness and productivity</subtitle><entry><title type="html">The journey to happiness</title><link href="http://localhost:4000/the-journey-to-happiness" rel="alternate" type="text/html" title="The journey to happiness" /><published>2018-10-08T00:00:00+01:00</published><updated>2018-10-08T00:00:00+01:00</updated><id>http://localhost:4000/the-journey-to-happiness</id><content type="html" xml:base="http://localhost:4000/the-journey-to-happiness">During my late teens (high school and the first year of university), I struggled with deep depressive moments and accompanied some close friends passing through the same kind of problem. It was a rough period but I am conscious it's a phenomenon that is increasingly recurrent nowadays, especially in teens. Is a state of transition to adulthood that most of us aren't ready for.
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-11-21T23:50:25+00:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Goa’s Blog</title><subtitle>In this blog you can find articles related with my passions, mainly computers.</subtitle><entry><title type="html">Static vs dynamic linking</title><link href="http://localhost:4000/static-vs-dynamic-linking" rel="alternate" type="text/html" title="Static vs dynamic linking" /><published>2022-11-14T00:00:00+00:00</published><updated>2022-11-14T00:00:00+00:00</updated><id>http://localhost:4000/static-vs-dynamic-linking</id><content type="html" xml:base="http://localhost:4000/static-vs-dynamic-linking">&lt;h3 id=&quot;what-is-staticlinking&quot;&gt;What is static linking?&lt;/h3&gt;
 
-In an attempt to surpass this phase, I tried to understand what were the underlying causes. What has changed since my early simple, happy middle school years?
+&lt;p&gt;Static linking links libraries at compile time, copying them to the final binary.&lt;/p&gt;
 
-In my journey, I discovered that, as a young introverted male, I lacked knowledge and intuition in areas related to soft skills. School and natural curiosity were great to acquire intellectual skills but as we grow up, relationships with ourselves and others get more complex.
+&lt;h3 id=&quot;what-is-dynamiclinking&quot;&gt;What is dynamic linking?&lt;/h3&gt;
 
-From masculinity, life's purpose, religion, society, relationships with lovers and friends, goals, dreams, mindfulness and many more. I intend to explore this subjects in the future. I hope I will be able to set someone's life back on track or simply improve it.
+&lt;p&gt;Dynamic linking loads and links libraries at runtime, loading them to memory.&lt;/p&gt;
 
-I would love to hear your opinions, will try to set up a social account to talk with you as soon as possible.
+&lt;p&gt;Only the name of the shared libraries is saved at compile time.&lt;/p&gt;
 
-Happiness is our right but we must work on it like it is our duty.</content><author><name></name></author><summary type="html">During my late teens (high school and the first year of university), I struggled with deep depressive moments and accompanied some close friends passing through the same kind of problem. It was a rough period but I am conscious it’s a phenomenon that is increasingly recurrent nowadays, especially in teens. Is a state of transition to adulthood that most of us aren’t ready for.</summary></entry><entry><title type="html">Welcome to my blog</title><link href="http://localhost:4000/welcome-to-my-blog" rel="alternate" type="text/html" title="Welcome to my blog" /><published>2018-09-10T00:00:00+01:00</published><updated>2018-09-10T00:00:00+01:00</updated><id>http://localhost:4000/welcome-to-my-blog</id><content type="html" xml:base="http://localhost:4000/welcome-to-my-blog">Welcome to my personal blog :)
+&lt;p&gt;These names are saved in a PLT (Procedure Linkage Table)&lt;/p&gt;
 
-This blog is about me, particularly my crazy life experiments to achieve productivity, reduce addictions and try to be happier overall.
+&lt;h3 id=&quot;static-vs-dynamiclinking&quot;&gt;Static vs dynamic linking&lt;/h3&gt;
 
-At this date, the blog is in its most basic state. Hope to bring new features in the futures to connect with you, get your opinions or suggestions and hopefully engage in interesting debates.
+&lt;p&gt;&lt;strong&gt;Static&lt;/strong&gt;&lt;/p&gt;
 
-The blog will receive content soon, so I will be me more than glad to have you back in a week.</content><author><name></name></author><summary type="html">Welcome to my personal blog :)</summary></entry></feed>
+&lt;ul&gt;
+  &lt;li&gt;Bigger binaries&lt;/li&gt;
+  &lt;li&gt;Updates to shared library code can add breaking changes and prevent the program from running&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Dynamic&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Depend on external libraries to be installed and be compatible&lt;/li&gt;
+  &lt;li&gt;Shared libraries are shared across processes&lt;/li&gt;
+  &lt;li&gt;Shared library code can be updated/patched without new compilation&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;how-to-create-statically-linkedbinary&quot;&gt;How to create statically linked binary?&lt;/h3&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ ld [options] objfile
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;ld combines a number of object and archive files, relocates their data and ties up symbol references. Usually the last step in compiling a program is to run ld.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ gcc hello.c -static -o hello
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;how-to-create-dynamically-linkedbinary&quot;&gt;How to create dynamically linked binary?&lt;/h3&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ gcc hello.c -o hello
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;how-to-know-a-binary-is-statically-or-dynamically-linked&quot;&gt;How to know a binary is statically or dynamically linked?&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;Check type of linking&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ file /usr/bin/gcc
+/usr/bin/gcc: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID[sha1]=017fc52acbca077c9bc6a4e8f04dd90eb5385243, for GNU/Linux 4.4.0, stripped
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Check dynamically linked libraries&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ ldd /bin/gcc
+linux-vdso.so.1 (0x00007fff6377e000)
+libc.so.6 =&amp;gt; /usr/lib/libc.so.6 (0x00007fcd238f2000)
+/lib64/ld-linux-x86-64.so.2 =&amp;gt; /usr/lib64/ld-linux-x86-64.so.2 (0x00007fcd23b02000)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name></name></author><summary type="html">What is static linking?</summary></entry></feed>
