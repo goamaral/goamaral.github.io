@@ -1,0 +1,10 @@
+---
+---
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  background-color: #141414;
+  background-image: url("https://www.transparenttextures.com/patterns/black-felt.png");
+}

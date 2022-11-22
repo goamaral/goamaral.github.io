@@ -1,0 +1,14 @@
+{
+  "name": "goamaral.github.io",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:Goamaral/goamaral.github.io.git",
+  "author": "Gonçalo Amaral <goa.docs@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "autoprefixer": "^10.4.13",
+    "cssnano": "^5.1.14",
+    "postcss": "^8.4.19",
+    "tailwindcss": "^3.2.4"
+  }
+}
