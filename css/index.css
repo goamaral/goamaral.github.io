@@ -36,10 +36,3 @@
 #home .continue:hover {
   text-decoration: underline;
 }
-
-#content {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  margin-top: 2rem;
-}

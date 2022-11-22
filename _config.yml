@@ -5,10 +5,12 @@ baseurl:
 url:
 
 markdown: kramdown
-theme: minima
+# incremental: true
+permalink: /:categories/:title
+
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
 
-incremental: true
-permalink: /:categories/:title
+postcss:
+  cache: false
