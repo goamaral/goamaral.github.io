@@ -1,0 +1,19 @@
+<div class="max-w-3xl mb-8 p-8 bg-zinc-200">
+  <a href="{{ include.post.url }}" class="title text-2xl text-center font-['Bangers'] mb-2 block">
+    <h3>{{ include.post.title }}</h3>
+  </a>
+
+  <p class="text-xs text-center">{{ include.post.date | date: "%d %B %Y" }}</p>
+
+  <div class="markdown">
+    {% if include.shorten  %}
+      {{ include.post.content | truncatewords: 100 }}
+    {% else %}
+      {{ include.post.content }}
+    {% endif %}
+  </div>
+
+  {% if include.shorten && ((include.post.content | number_of_words) > 100) %}
+    <a href="{{ include.post.url }}" class="mt-4 text-xs block font-bold hover:underline">Continue reading...</a>
+  {% endif %}
+</div>

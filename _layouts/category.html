@@ -1,16 +1,8 @@
 ---
 layout: core
 ---
-<div class="d-flex flex-col	">
+<div class="d-flex flex-col">
   {% for post in site.categories.personal %}
-    <div id="home">
-      <h3 class="title">{{ post.title }}</h3>
-    
-      <div class="content">{{ post.excerpt }}</div>
-    
-      <p class="date">{{ post.date | date: "%d %B %Y" }}</p>
-    
-      <a href="{{ post.url }}" class="continue">Continue reading...</a>
-    </div>
+    {% include shorten_post.html post=post %}
   {% endfor %}  
 </div>
