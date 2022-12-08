@@ -23,10 +23,6 @@
 <!-- End Jekyll SEO tag -->
 
   <title>Goa's Blog</title>
-  <link rel="stylesheet" href="/css/wrapper.css">
-  
-  <link rel="stylesheet" href="/css/index.css">
-  
   <link rel="stylesheet" href="/assets/css/index.css">
   <link href="https://fonts.googleapis.com/css?family=Bangers|Open+Sans:400,700" rel="stylesheet"> 
   <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -40,25 +36,30 @@
 </head>
 
 <body class="font-['Open Sans']">
-  <div id="top" class="font-['Bangers'] py-8 text-white text-center">
+  <div class="font-['Bangers'] py-8 text-white text-center">
     <a href="/"><h1 class="mb-4 text-7xl">Goa's Blog</h1></a>
     <h2 class="text-lg">In this blog you can find articles related with my passions, mainly computers.</h2>
   </div>
 
   <div class="flex justify-center">
     
-  <div id="home">
-    <a href="/static-vs-dynamic-linking" class="title">Static vs dynamic linking</a>
+  <div class="max-w-3xl mb-8 p-8 bg-zinc-200">
+  <a href="/static-vs-dynamic-linking" class="title text-2xl text-center font-['Bangers'] mb-2 block">
+    <h3>Static vs dynamic linking</h3>
+  </a>
+
+  <p class="text-xs text-center">14 November 2022</p>
+
+  <div class="markdown">
     
-    <p class="date">14 November 2022</p>
-  
-    <div class="content"><h3 id="what-is-staticlinking">What is static linking?</h3> <p>Static linking links libraries at compile time, copying them to the final binary.</p> <h3 id="what-is-dynamiclinking">What is dynamic linking?</h3> <p>Dynamic linking loads and links libraries at runtime, loading them to memory.</p> <p>Only the name of the shared libraries is saved at compile time.</p> <p>These names are saved in a PLT (Procedure Linkage Table)</p> <h3 id="static-vs-dynamiclinking">Static vs dynamic linking</h3> <p><strong>Static</strong></p> <ul> <li>Bigger binaries</li> <li>Updates to shared library code can add breaking changes and prevent the program from running</li> </ul> <p><strong>Dynamic</strong></p> <ul> <li>Depend on external libraries to be installed and be compatible</li> <li>Shared libraries are shared across processes</li> <li>Shared library code...</div>
-      
-    
-    
-      <a href="/static-vs-dynamic-linking" class="continue">Continue reading...</a>
+      <h3 id="what-is-staticlinking">What is static linking?</h3> <p>Static linking links libraries at compile time, copying them to the final binary.</p> <h3 id="what-is-dynamiclinking">What is dynamic linking?</h3> <p>Dynamic linking loads and links libraries at runtime, loading them to memory.</p> <p>Only the name of the shared libraries is saved at compile time.</p> <p>These names are saved in a PLT (Procedure Linkage Table)</p> <h3 id="static-vs-dynamiclinking">Static vs dynamic linking</h3> <p><strong>Static</strong></p> <ul> <li>Bigger binaries</li> <li>Updates to shared library code can add breaking changes and prevent the program from running</li> </ul> <p><strong>Dynamic</strong></p> <ul> <li>Depend on external libraries to be installed and be compatible</li> <li>Shared libraries are shared across processes</li> <li>Shared library code...
     
   </div>
+
+  
+    <a href="/static-vs-dynamic-linking" class="mt-4 text-xs block font-bold hover:underline">Continue reading...</a>
+  
+</div>
 
   </div>
 </body>
