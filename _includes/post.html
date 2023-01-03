@@ -1,16 +1,14 @@
-<div class="max-w-3xl mb-8 p-8 bg-zinc-200">
-  <a href="{{ include.post.url }}" class="title text-2xl text-center font-['Bangers'] mb-2 block">
-    <h3>{{ include.post.title }}</h3>
-  </a>
-
-  <p class="text-xs text-center">{{ include.post.date | date: "%d %B %Y" }}</p>
-
-  <div class="markdown">
-    {% if include.shorten  %}
-      {{ include.post.content | truncatewords: 100 }}
-    {% else %}
+<div class="w-1/2 mb-8 p-8 bg-zinc-200">
+  <div class="{% if include.shorten  %}max-h-[500px] overflow-hidden{% endif %}">
+    <a href="{{ include.post.url }}" class="title text-2xl text-center font-['Bangers'] mb-2 block">
+      <h1>{{ include.post.title }}</h1>
+    </a>
+  
+    <p class="text-xs text-center">{{ include.post.date | date: "%d %B %Y" }}</p>
+  
+    <div class="markdown">
       {{ include.post.content }}
-    {% endif %}
+    </div>
   </div>
 
   {% if include.shorten && ((include.post.content | number_of_words) > 100) %}
