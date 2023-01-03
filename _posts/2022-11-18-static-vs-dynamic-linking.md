@@ -1,7 +1,6 @@
 ---
 layout: post
 title: Static vs dynamic linking
-css: post
 ---
 ### What is static linking?
 
