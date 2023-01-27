@@ -6,6 +6,7 @@
   "author": "Gonçalo Amaral <goa.docs@gmail.com>",
   "license": "MIT",
   "devDependencies": {
+    "@tailwindcss/typography": "^0.5.9",
     "autoprefixer": "^10.4.13",
     "cssnano": "^5.1.14",
     "postcss": "^8.4.19",
