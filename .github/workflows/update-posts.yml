@@ -3,15 +3,17 @@ name: Update posts
 on:
   schedule:
     - cron: '0 0 * * 1'
+  workflow_dispatch: # Allows workflow to be ran manually
 
 jobs:
-  build:
+  update-posts:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
           node-version: '19'
+      - run: npm install
       - run: ./bin/update-posts
       - run: |
           git config --global user.name 'Gonçalo Amaral'
