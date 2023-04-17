@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Static vs dynamic linking
+categories: linux compilers
 ---
 ### What is static linking?
 
@@ -27,27 +28,27 @@ These names are saved in a PLT (Procedure Linkage Table)
 - Shared library code can be updated/patched without new compilation
 - Updates to shared library code can add breaking changes and prevent the program from running
 
-### How to create statically linked binary?
+### How to create a statically linked binary?
 
 ```
 $ ld [options] objfile
 ```
 
-ld combines a number of object and archive files, relocates their data and ties up symbol references. Usually the last step in compiling a program is to run ld.
+`ld` combines several object and archive files, relocates their data and ties up symbol references. Usually, the last step in compiling a program is to run `ld`.
 
 ```
 $ gcc hello.c -static -o hello
 ```
 
-### How to create dynamically linked binary?
+### How to create a dynamically linked binary?
 
 ```
 $ gcc hello.c -o hello
 ```
 
-### How to know a binary is statically or dynamically linked?
+### How to know if a binary is statically or dynamically linked?
 
-**Check type of linking**
+**Check the type of linking**
 
 ```
 $ file /usr/bin/gcc

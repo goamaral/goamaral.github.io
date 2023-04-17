@@ -1,10 +1,11 @@
 ---
 layout: post
 title: ELF (Executable and Linkable Format)
+categories: linux compilers
 ---
 *(The information in this article might be incomplete, I only include information I understood or considered most relevant. Please visit the references for more information)*
 
-File format used for executable files, object code, shared libraries, and core dumps.
+Is a file format used for executable files, object code, shared libraries, and core dumps.
 
 By design, the ELF format is flexible, extensible, and cross-platform. For instance, it supports different endiannesses and address sizes, so it does not exclude any particular CPU or instruction set architecture.
 
@@ -23,7 +24,7 @@ The segments contain information that is needed for run time execution of the fi
 ### ELF header
 
 - 32/64 bit format
-- endianess
+- endianness
 - target ABI
 - file type (relocatable, executable, shared, core, others…)
 - instruction set
