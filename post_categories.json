@@ -1,0 +1,7 @@
+{
+  "2022-11-18-static-vs-dynamic-linking": "linux compilers",
+  "2022-11-20-elf-executable-and-linkable-format": "linux compilers",
+  "2022-12-06-linux-inodes": "linux filesystems",
+  "2023-01-05-fuse-filesystem": "linux filesystems golang",
+  "2023-04-07-io-uring": "linux io"
+}

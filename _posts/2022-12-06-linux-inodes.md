@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Linux inodes
+categories: linux filesystems
 ---
 An inode is an index node for every file and directory in the filesystem. Inodes do not store actual data. Instead, they store the metadata where you can find the storage blocks of each file’s data.
 
