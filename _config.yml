@@ -6,7 +6,7 @@ baseurl: ''
 
 markdown: kramdown
 # incremental: true
-permalink: /:categories/:title
+permalink: /posts/:year/:month/:day/:title
 
 plugins:
   - jekyll-feed
