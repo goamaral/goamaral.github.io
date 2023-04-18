@@ -1,0 +1,21 @@
+---
+layout: core
+permalink: /categories
+title: Categories
+published: false
+---
+<div>
+  {% for category in site.categories %}
+    {% capture category_name %}{{ category | first }}{% endcapture %}
+  
+    <div>
+      <p>{{category_name}}</p>
+      <div>
+        {% for post in site.categories[category_name] %}
+          <a href="{{ site.baseurl }}{{ post.url }}"><p>{{post.date | date_to_string}} {{post.title}}</p></a>
+        {% endfor %}
+      </div>
+    </div>
+
+  {% endfor %}
+</div>
