@@ -4,7 +4,7 @@ permalink: /categories
 title: Categories
 published: false
 ---
-<div>
+<div class="text-white">
   {% for category in site.categories %}
     {% capture category_name %}{{ category | first }}{% endcapture %}
   
@@ -16,6 +16,5 @@ published: false
         {% endfor %}
       </div>
     </div>
-
   {% endfor %}
 </div>
