@@ -1,2 +1,2 @@
 # Personal blog
-First attempt to create a responsive website
+In this blog you can find articles related with my passions, mainly computers.
