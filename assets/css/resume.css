@@ -1,0 +1,56 @@
+---
+---
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  @media only print {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  @media only screen {
+    margin: auto;
+    max-width: 800px;
+    padding: 2.5rem; /* p-10 */
+  }
+}
+
+@layer base {
+  h1 {
+    @apply text-4xl font-bold mb-4;
+  }
+
+  h2 {
+    @apply text-2xl font-semibold mb-2;
+  }
+
+  h3 {
+    @apply text-xl font-semibold mb-2;
+    
+    & > span {
+      @apply text-base font-normal text-gray-500 ml-1;
+    }
+  }
+
+  p {
+    @apply text-justify mb-1;
+  }
+  
+  section {
+    @apply my-6;
+  }
+
+  ul {
+    @apply list-disc pl-8 mb-2;
+
+    & > li {
+      @apply mb-0.5;
+    }
+  }
+
+  a {
+    @apply underline text-blue-600;
+  }
+} 
