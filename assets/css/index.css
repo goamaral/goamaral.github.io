@@ -11,23 +11,37 @@ html {
 
 @layer base {
   .markdown {
-    h2 {
+    & h2 {
       @apply text-xl font-bold leading-10;
     }
 
-    h3 {
+    & h3 {
       @apply text-lg font-bold leading-10;
     }
 
-    p {
-      @apply leading-8; 
+    & p {
+      @apply leading-8 mb-2; 
     }
 
-    ul {
+    & ul {
       @apply leading-8 list-disc list-inside; 
     }
 
-    pre {
+    & ol {
+      @apply leading-8 list-decimal list-inside;
+
+      & li {
+        & > * {
+          @apply ml-5;
+        }
+
+        & :first-child {
+          @apply inline ml-auto;
+        }
+      }
+    }
+
+    & pre {
       color: #e5e7eb;
       background-color: #1f2937;
       overflow-x: auto;
@@ -43,7 +57,7 @@ html {
       padding-left: 1.1428571em;
     }
 
-    code {
+    & code {
       background-color: transparent;
       border-width: 0;
       border-radius: 0;
@@ -55,8 +69,8 @@ html {
       line-height: inherit;
     }
 
-    a {
-      @apply underline;
+    & a {
+      @apply underline text-blue-600;
     }
   }
 } 
