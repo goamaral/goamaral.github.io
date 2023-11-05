@@ -19,23 +19,23 @@ html {
 
 @layer base {
   h1 {
-    @apply text-4xl font-bold mb-4;
+    @apply mb-4 text-4xl font-bold;
   }
 
   h2 {
-    @apply text-2xl font-semibold mb-2;
+    @apply mb-2 text-2xl font-semibold;
   }
 
   h3 {
-    @apply text-xl font-semibold mb-2;
+    @apply mb-2 text-xl font-semibold;
     
     & > span {
-      @apply text-base font-normal text-gray-500 ml-1;
+      @apply ml-1 text-base font-normal text-gray-500;
     }
   }
 
   p {
-    @apply text-justify mb-1;
+    @apply mb-1 text-justify;
   }
   
   section {
@@ -43,7 +43,7 @@ html {
   }
 
   ul {
-    @apply list-disc pl-8 mb-2;
+    @apply pl-8 mb-2 list-disc;
 
     & > li {
       @apply mb-0.5;
@@ -51,6 +51,6 @@ html {
   }
 
   a {
-    @apply underline text-blue-600;
+    @apply text-blue-600 underline;
   }
 } 
