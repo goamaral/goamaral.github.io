@@ -28,10 +28,10 @@ html {
 
   h3 {
     @apply mb-2 text-xl font-semibold;
-    
-    & > span {
-      @apply ml-1 text-base font-normal text-gray-500;
-    }
+  }
+
+  .subtitle {
+    @apply ml-1 text-base font-normal text-gray-500;
   }
 
   p {
