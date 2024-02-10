@@ -1,6 +1,6 @@
 ---
 layout: post
-title: ELF (Executable and Linkable Format)
+title: What is an ELF file?
 categories: linux compilers
 ---
 *(The information in this article might be incomplete, I only include information I understood or considered most relevant. Please visit the references for more information)*

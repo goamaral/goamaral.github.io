@@ -1,6 +1,6 @@
 ---
 layout: post
-title: FUSE Filesystem - Sep 2023
+title: What is a FUSE filesystem? | Sep 2023
 ---
 This is a follow-up to a previous article exploring/implementing a FUSE filesystem. There is still a lot of work so this will become a series.
 
