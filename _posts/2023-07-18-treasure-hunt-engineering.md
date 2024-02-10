@@ -1,8 +1,8 @@
 ---
 layout: post
-title: General Dump - Jul 2023
+title: Treasure Hunt - Engineering | Jul 2023
 ---
-This will be the first post of a series of posts I will call *Dumps*. In each post, I will dump about 5 items that caught my attention (articles, libraries, any kind of link/reference really). This post will be a *General Dump*, where I list items that are not related to a specific topic. In the future, there will be specific *Dump* series (ruby, linux and containers, databases, go). Hope you enjoy this new format.
+This will be the first post of a series of posts I will call *Treasure Hunts*. In each post, I will showcase 5 items that caught my attention (articles, libraries, any kind of link/reference really). This post will be a *Engineering Treasure Hunt*, where I list items that are not related to a specific topic. In the future, there will be topic specific *Treasure Hunt* series (ruby, linux and containers, databases, go). Hope you enjoy this new format.
 
 1. [https://www.16elt.com/2023/01/06/logging-practices-I-follow](https://www.16elt.com/2023/01/06/logging-practices-I-follow)
     
