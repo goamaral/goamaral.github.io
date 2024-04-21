@@ -35,10 +35,18 @@ int main() {
   }
 
   uint n_chunks = (uint)ceilf((float)file_info.st_size / CHUNK_BYTE_SIZE);
-  printf("File info (size: %ld, chunk_size: %d, n_chunks: %d)\n",
-         file_info.st_size, CHUNK_BYTE_SIZE, n_chunks);
+  printf("File info (size: %ld, chunk_size: %d, n_chunks: %d)\n", file_info.st_size, CHUNK_BYTE_SIZE, n_chunks);
 
-  printf("Initializing ring queue...\n");
+  printf("Allocating %d chunks\n", n_chunks);
+  char **chunks = malloc(sizeof(char*) * n_chunks);
+  if (chunks == NULL) {
+    fprintf(stderr, "malloc: %s\n", strerror(errno));
+    exit_code = 1;
+    goto CLEANUP;
+  }
+  stage = STAGE_CHUNKS_ALLOCATED;
+
+  printf("Initializing ring queue\n");
   struct io_uring ring;
   int status = io_uring_queue_init(QUEUE_SIZE, &ring, 0);
   if (status < 0) {
@@ -48,15 +56,7 @@ int main() {
   }
   stage = STAGE_QUEUE_INITIALIZED;
 
-  char **chunks = malloc(sizeof(char *) * n_chunks);
-  if (chunks == NULL) {
-    fprintf(stderr, "malloc: %s\n", strerror(errno));
-    exit_code = 1;
-    goto CLEANUP;
-  }
-  stage = STAGE_CHUNKS_ALLOCATED;
-
-  printf("Creating an SQE for each chunk...\n");
+  printf("Creating an SQE for each chunk\n");
   struct io_uring_sqe *sqe;
   off_t offset = 0;
   for (uint i = 0; i < n_chunks; i++) {
@@ -74,25 +74,27 @@ int main() {
     chunks[i] = malloc(CHUNK_BYTE_SIZE);
 
     // Read file chunck
-    io_uring_prep_read(sqe, fd, &chunks[i], CHUNK_BYTE_SIZE, offset);
+    io_uring_prep_read(sqe, fd, chunks[i], CHUNK_BYTE_SIZE, offset);
     offset += CHUNK_BYTE_SIZE;
   }
 
-  printf("Marking ring queue as read for processing...\n");
+  printf("Marking ring queue as read for processing\n");
   int submitted_requests = io_uring_submit(&ring);
   if (status < 0) {
     fprintf(stderr, "io_uring_submit: %s\n", strerror(-submitted_requests));
     exit_code = 1;
     goto CLEANUP;
   } else if (submitted_requests != n_chunks) {
-    fprintf(stderr,
-            "io_uring_submit: created %d requests but %d were submitted\n",
-            n_chunks, submitted_requests);
+    fprintf(
+      stderr,
+      "io_uring_submit: created %d requests but %d were submitted\n",
+      n_chunks, submitted_requests
+    );
     exit_code = 1;
     goto CLEANUP;
   }
 
-  printf("Wait for CQEs and marking them as seen...\n");
+  printf("Wait for CQEs and marking them as seen\n");
   struct io_uring_cqe *cqe;
   offset = 0;
   for (int i = 0; i < n_chunks; i++) {
@@ -104,27 +106,29 @@ int main() {
     }
 
     if (cqe->res != CHUNK_BYTE_SIZE && offset + cqe->res != file_info.st_size) {
-      fprintf(stderr,
-              "expected to read %d bytes but read %d bytes (file was not fully "
-              "read)\n",
-              CHUNK_BYTE_SIZE, cqe->res);
+      fprintf(
+        stderr,
+        "expected to read %d bytes but read %d bytes (file was not fully read)\n",
+        CHUNK_BYTE_SIZE, cqe->res
+      );
       exit_code = 1;
       goto CLEANUP;
     }
     offset += cqe->res;
     io_uring_cqe_seen(&ring, cqe);
 
-    // puts(chunks[i]);
+    printf("---------- CHUNK %d ----------\n", i+1);
+    puts(chunks[i]);
   }
 
 CLEANUP:
-  if (stage >= STAGE_QUEUE_INITIALIZED) {
+  if (stage >= STAGE_QUEUE_INITIALIZED) io_uring_queue_exit(&ring);
+  if (stage >= STAGE_CHUNKS_ALLOCATED) {
     for (uint i = 0; i < n_chunks; i++) {
       if (chunks[i] != NULL) free(&chunks[i]);
     }
     free(chunks);
   }
-  if (stage >= STAGE_QUEUE_INITIALIZED) io_uring_queue_exit(&ring);
   if (stage >= STAGE_FILE_OPEN) close(fd);
 
   return exit_code;
