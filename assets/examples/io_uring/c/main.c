@@ -7,6 +7,7 @@
 
 #define QUEUE_SIZE 10
 #define CHUNK_BYTE_SIZE 1024  // 1KB
+#define PATH "example.txt"
 
 enum Stage {
   STAGE_START,
@@ -19,23 +20,23 @@ int main() {
   int exit_code = 0;
   enum Stage stage = STAGE_START;
 
-  // Get file descriptor and info
-  int fd = open("example.txt", O_RDONLY);
+  int fd = open(PATH, O_RDONLY);
   if (fd == -1) {
-    fprintf(stderr, "open: %s\n", strerror(errno));
+    fprintf(stderr, "failed to open file at %s: %s\n", PATH, strerror(errno));
     exit_code = 1;
     goto CLEANUP;
   }
   stage = STAGE_FILE_OPEN;
+
   struct stat file_info;
   if (fstat(fd, &file_info) < 0) {
-    fprintf(stderr, "fstat: %s\n", strerror(errno));
+    fprintf(stderr, "failed to get file info: %s\n", strerror(errno));
     exit_code = 1;
     goto CLEANUP;
   }
-
-  uint n_chunks = (uint)ceilf((float)file_info.st_size / CHUNK_BYTE_SIZE);
-  printf("File info (size: %ld, chunk_size: %d, n_chunks: %d)\n", file_info.st_size, CHUNK_BYTE_SIZE, n_chunks);
+  off_t size = file_info.st_size;
+  uint n_chunks = (uint)ceilf((float)size / CHUNK_BYTE_SIZE);
+  printf("File info (size: %ld, chunk_size: %d, n_chunks: %d)\n", size, CHUNK_BYTE_SIZE, n_chunks);
 
   printf("Allocating %d chunks\n", n_chunks);
   char **chunks = malloc(sizeof(char*) * n_chunks);
@@ -62,8 +63,6 @@ int main() {
   for (uint i = 0; i < n_chunks; i++) {
     // Get the next available submission queue entry
     sqe = io_uring_get_sqe(&ring);
-
-    // Queue full
     if (sqe == NULL) {
       fprintf(stderr, "ring queue is full\n");
       exit_code = 1;
