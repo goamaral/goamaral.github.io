@@ -77,9 +77,9 @@ int main() {
     offset += CHUNK_BYTE_SIZE;
   }
 
-  printf("Marking ring queue as read for processing\n");
+  printf("Submitting queue\n");
   int submitted_requests = io_uring_submit(&ring);
-  if (status < 0) {
+  if (submitted_requests < 0) {
     fprintf(stderr, "io_uring_submit: %s\n", strerror(-submitted_requests));
     exit_code = 1;
     goto CLEANUP;

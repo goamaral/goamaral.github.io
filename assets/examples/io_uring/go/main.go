@@ -39,14 +39,14 @@ func run() error {
 	nChunks := uint(math.Ceil(float64(size) / CHUNK_BYTE_SIZE))
 	fmt.Printf("File info (size: %d, chunk_size: %d, n_chunks: %d)\n", size, CHUNK_BYTE_SIZE, nChunks)
 
-	fmt.Printf("Initializing ring queue\n")
+	fmt.Println("Initializing ring queue")
 	queue, err := NewQueue(QUEUE_SIZE)
 	if err != nil {
 		return fmt.Errorf("failed to create queue: %w", err)
 	}
 	defer queue.Close()
 
-	fmt.Printf("Creating an SQE for each chunk\n")
+	fmt.Println("Enqueue a SQE for each chunk")
 	offset := uint(0)
 	chunks := []*C.char{}
 	defer func() {
@@ -55,7 +55,7 @@ func run() error {
 		}
 	}()
 	for i := uint(0); i < nChunks; i++ {
-		chunk, err := queue.Enqueue(Request{File: file, Size: CHUNK_BYTE_SIZE})
+		chunk, err := queue.Enqueue(Request{Id: C.ulonglong(i), File: file, Size: CHUNK_BYTE_SIZE})
 		if err != nil {
 			return fmt.Errorf("failed to enqueue entry: %w", err)
 		}
@@ -63,35 +63,37 @@ func run() error {
 		offset += CHUNK_BYTE_SIZE
 	}
 
-	/*
-			printf("Marking ring queue as read for processing\n");
-		  int submitted_requests = io_uring_submit(&ring);
-		  if (status < 0) {
-		    fprintf(stderr, "io_uring_submit: %s\n", strerror(-submitted_requests));
-		    exit_code = 1;
-		    goto CLEANUP;
-		  } else if (submitted_requests != n_chunks) {
-		    fprintf(
-		      stderr,
-		      "io_uring_submit: created %d requests but %d were submitted\n",
-		      n_chunks, submitted_requests
-		    );
-		    exit_code = 1;
-		    goto CLEANUP;
-		  }
-	*/
+	fmt.Println("Submitting queue")
+	err = queue.Submit()
+	if err != nil {
+		return fmt.Errorf("failed to submit queue: %w", err)
+	}
+
+	fmt.Println("Wait for CQEs")
+	for i := uint(0); i < nChunks; i++ {
+		res, err := queue.WaitForResponse()
+		if err != nil {
+			return fmt.Errorf("failed to wait for response: %w", err)
+		}
+		if res.Err != nil {
+			fmt.Fprintf(os.Stderr, "failed to read chunk (%d): %s", res.Id, res.Err)
+			continue
+		}
+		fmt.Printf("---------- CHUNK %d ----------\n", res.Id)
+		fmt.Println(C.GoString(chunks[res.Id]))
+	}
 
 	return nil
 }
 
 type Queue struct {
-	Capacity uint
-	Size     uint
-	Ring     C.struct_io_uring
+	Ring C.struct_io_uring
 }
 
+var ErrReachedMaxCapacity = errors.New("reached max capacity")
+
 func NewQueue(capacity uint) (Queue, error) {
-	q := Queue{Capacity: capacity}
+	q := Queue{}
 	status := C.io_uring_queue_init(C.uint(capacity), &q.Ring, 0)
 	if status < 0 {
 		return Queue{}, errors.New(C.GoString(C.strerror(-status)))
@@ -103,21 +105,18 @@ func (q *Queue) Close() {
 }
 
 type Request struct {
+	Id     C.ulonglong
 	File   *os.File
 	Offset uint
 	Size   uint
 }
 
 func (q *Queue) Enqueue(req Request) (chunk *C.char, err error) {
-	if q.Size == q.Capacity {
-		return nil, errors.New("reached queue max capacity")
-	}
-
-	// Get the next available submission queue entry
 	sqe := C.io_uring_get_sqe(&q.Ring)
 	if sqe == nil {
-		return nil, errors.New("reached queue max capacity")
+		return nil, ErrReachedMaxCapacity
 	}
+	sqe.user_data = req.Id
 
 	chunk = (*C.char)(C.malloc(C.ulong(C.sizeof_char * req.Size)))
 	defer func() {
@@ -127,7 +126,33 @@ func (q *Queue) Enqueue(req Request) (chunk *C.char, err error) {
 	}()
 
 	C.io_uring_prep_read(sqe, C.int(req.File.Fd()), unsafe.Pointer(chunk), C.uint(req.Size), C.ulonglong(req.Offset))
-	q.Size++
 
-	return (chunk), nil
+	return chunk, nil
+}
+
+func (q *Queue) Submit() error {
+	submittedRequests := C.io_uring_submit(&q.Ring)
+	if submittedRequests < 0 {
+		return errors.New(C.GoString(C.strerror(-submittedRequests)))
+	}
+	return nil
+}
+
+type Response struct {
+	Id  C.ulonglong
+	Err error
+}
+
+func (q *Queue) WaitForResponse() (Response, error) {
+	var cqe *C.struct_io_uring_cqe
+	status := C.io_uring_wait_cqe(&q.Ring, &cqe)
+	if status < 0 {
+		return Response{}, errors.New(C.GoString(C.strerror(-status)))
+	}
+	res := Response{Id: cqe.user_data}
+	if cqe.res < 0 {
+		res.Err = errors.New(C.GoString(C.strerror(-cqe.res)))
+	}
+	C.io_uring_cqe_seen(&q.Ring, cqe)
+	return res, nil
 }
