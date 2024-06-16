@@ -1,5 +1,6 @@
 ---
 ---
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -19,7 +20,7 @@ html {
 
 @layer base {
   h1 {
-    @apply mb-4 text-4xl font-bold;
+    @apply mb-4 text-3xl font-bold sm:text-4xl;
   }
 
   h2 {
@@ -37,7 +38,7 @@ html {
   p {
     @apply mb-1 text-justify;
   }
-  
+
   section {
     @apply my-6;
   }
@@ -53,4 +54,4 @@ html {
   a {
     @apply text-blue-600 underline;
   }
-} 
+}
