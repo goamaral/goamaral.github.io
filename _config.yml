@@ -1,8 +1,8 @@
 title: Goa's Blog
 email: goa.docs@gmail.com
 description: In this blog you can find articles related with my passions, mainly computers.
-url: 'https://goamaral.github.io'
-baseurl: ''
+url: "https://goamaral.github.io"
+baseurl: ""
 
 markdown: kramdown
 # incremental: true
@@ -14,3 +14,14 @@ plugins:
 
 postcss:
   cache: false
+
+exclude:
+  - bin/
+  - node_modules/
+  - Gemfile
+  - Gemfile.lock
+  - package.json
+  - package-lock.json
+  - postcss.config.js
+  - README.md
+  - tailwind.config.js
