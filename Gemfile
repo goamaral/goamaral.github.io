@@ -1,11 +1,11 @@
 source "https://rubygems.org"
 
-gem "github-pages", "~> 227"
-gem "webrick", "~> 1.7"
+gem "webrick", "~> 1.8"
 gem "tzinfo"
 gem "tzinfo-data"
 
 group :jekyll_plugins do
-  gem "jekyll-feed", "~> 0.12"
-  gem "jekyll-postcss", "~> 0.5.0"
+  gem "github-pages", "~> 231"
+  gem "jekyll-feed", "~> 0.17"
+  gem "jekyll-postcss", "~> 0.5"
 end
