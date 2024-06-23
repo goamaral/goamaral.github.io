@@ -3,6 +3,7 @@ email: goa.docs@gmail.com
 description: In this blog you can find articles related with my passions, mainly computers.
 url: "https://goamaral.github.io"
 baseurl: ""
+repository: goamaral/goamaral.github.io
 
 markdown: kramdown
 # incremental: true
@@ -25,3 +26,4 @@ exclude:
   - postcss.config.js
   - README.md
   - tailwind.config.js
+  - vendor/
