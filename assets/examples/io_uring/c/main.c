@@ -68,6 +68,7 @@ int main() {
       exit_code = 1;
       goto CLEANUP;
     }
+    sqe->user_data = i+1;
 
     // Alloc chunk memory
     chunks[i] = malloc(CHUNK_BYTE_SIZE);
@@ -116,8 +117,8 @@ int main() {
     offset += cqe->res;
     io_uring_cqe_seen(&ring, cqe);
 
-    printf("---------- CHUNK %d ----------\n", i+1);
-    puts(chunks[i]);
+    printf("---------- CHUNK %lld ----------\n", cqe->user_data);
+    puts(chunks[cqe->user_data-1]);
   }
 
 CLEANUP:

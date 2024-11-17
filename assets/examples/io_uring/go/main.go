@@ -19,7 +19,10 @@ const CHUNK_BYTE_SIZE = 1024 // 1KB
 const PATH = "example.txt"
 
 func main() {
-
+	err := run()
+	if err != nil {
+		panic(err)
+	}
 }
 
 func run() error {
@@ -55,7 +58,12 @@ func run() error {
 		}
 	}()
 	for i := uint(0); i < nChunks; i++ {
-		chunk, err := queue.Enqueue(Request{Id: C.ulonglong(i), File: file, Size: CHUNK_BYTE_SIZE})
+		chunk, err := queue.Enqueue(Request{
+			Id:     C.ulonglong(i + 1),
+			File:   file,
+			Size:   CHUNK_BYTE_SIZE,
+			Offset: offset,
+		})
 		if err != nil {
 			return fmt.Errorf("failed to enqueue entry: %w", err)
 		}
@@ -80,7 +88,7 @@ func run() error {
 			continue
 		}
 		fmt.Printf("---------- CHUNK %d ----------\n", res.Id)
-		fmt.Println(C.GoString(chunks[res.Id]))
+		fmt.Println(C.GoString(chunks[res.Id-1]))
 	}
 
 	return nil
